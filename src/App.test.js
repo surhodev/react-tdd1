@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render, queryByAttribute } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it('renders learn react link', () => {
+  const view = render(<App />);
+  
+  const getById = queryByAttribute.bind(null, 'id')
+
+  const mainContainer = getById(view.container, 'App')
+  expect(mainContainer).toBeInTheDocument()
 });
